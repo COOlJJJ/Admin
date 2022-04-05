@@ -7,10 +7,12 @@
           Only
           <el-tag class="permission-tag" size="small">admin</el-tag> can see this
         </span>
-        <el-tag v-permission="['admin']" class="permission-sourceCode" type="info">
+        <el-tag v-permission="['admin,admin1']" class="permission-sourceCode" type="info">
           v-permission="['admin']"
         </el-tag>
       </div>
+
+      
 
       <div>
         <span v-permission="['editor']" class="permission-alert">
