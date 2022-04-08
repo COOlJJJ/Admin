@@ -9,9 +9,9 @@
       </pan-thumb>
 
       <div class="info-container">
-        <span class="display_name">{{ name }}</span>
+        <span class="display_name">Hi, {{ name }}</span>
         <span style="font-size: 20px; padding-top: 20px; display: inline-block"
-          >Editor's Dashboard</span
+          >Dashboard</span
         >
       </div>
     </div>
