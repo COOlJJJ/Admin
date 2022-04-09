@@ -1,2 +1,1 @@
-# Admin
- 
+# Vue Digital Admin
