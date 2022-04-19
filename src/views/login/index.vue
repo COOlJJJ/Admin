@@ -7,10 +7,11 @@
           src="../../assets/LOGO/siemens.svg"
           alt=""
           style="
-            width: 200px;
+            width: 170px;
             height: 45px;
             margin-top: 5px;
             margin-left: 5px;
+            margin-right: 5px;
             z-index: 1;
           "
         /></div
@@ -82,9 +83,8 @@
 
           <el-button
             :loading="loading"
-            type="primary"
             round
-            style="width: 25%; margin-bottom: 30px"
+            class="btn"
             @click.native.prevent="handleLogin"
             >Login</el-button
           >
@@ -207,11 +207,11 @@ $bg: #283443;
 $light_gray: #fff;
 $cursor: #fff;
 
-@supports (-webkit-mask: none) and (not (cater-color: $cursor)) {
-  .login-container .el-input input {
-    color: $cursor;
-  }
-}
+// @supports (-webkit-mask: none) and (not (cater-color: $cursor)) {
+//   .login-container .el-input input {
+//     color: $cursor;
+//   }
+// }
 
 /* reset element-ui css */
 .login-container {
@@ -219,7 +219,6 @@ $cursor: #fff;
     display: inline-block;
     height: 47px;
     width: 85%;
-
     input {
       background: transparent;
       border: 0px;
@@ -228,7 +227,7 @@ $cursor: #fff;
       padding: 12px 5px 12px 15px;
       color: #000000;
       height: 47px;
-      caret-color: $cursor;
+      caret-color: $bg;
 
       &:-webkit-autofill {
         box-shadow: 0 0 0px 1000px $bg inset !important;
@@ -241,7 +240,7 @@ $cursor: #fff;
     border: 1px solid rgba(255, 255, 255, 0.1);
     background: rgba(0, 0, 0, 0.1);
     border-radius: 5px;
-    color: #454545;
+    // color: #454545;
   }
 }
 </style>
@@ -272,7 +271,7 @@ $light_gray: #eee;
   align-items: center;
 }
 .img img {
-  width: 600px;
+  width: 560px;
 }
 
 .wave {
@@ -282,27 +281,38 @@ $light_gray: #eee;
   bottom: 0;
   z-index: -1;
 }
-.el-container {
-  min-height: 100%;
+
+.btn {
+  display: block;
   width: 100%;
+  height: 47px;
+  border-radius: 25px;
+  margin: 1rem 0;
+  font-size: 1.2rem;
+  outline: none;
+  border: none;
+  background-image: linear-gradient(to right, #32be8f, #38d39f, #32be8f);
+  cursor: pointer;
+  color: #fff;
+  // text-transform: uppercase;
+  font-family: "Roboto", sans-serif;
+  background-size: 200%;
+  transition: 0.5s;
 }
-.blewOne {
-  position: absolute;
-  bottom: 3%;
-  left: 50%;
-  transform: translate(-50%, -50%); //(X,Y)水平减少自身的50%距离
+.btn:hover {
+  background-position: right;
 }
-.blew {
-  position: absolute;
-  bottom: 0;
-  left: 50%;
-  transform: translate(-50%, -50%); //(X,Y)水平减少自身的50%距离
+
+.container {
+  width: 100vw;
+  height: 100vh;
+  display: grid;
+  grid-template-columns: repeat(2, 1fr);
+  grid-gap: 18rem;
+  padding: 0 2rem;
 }
 .login-container {
-  
-  min-height: 100%;
-  width: 100%;
-  overflow: hidden;
+  display: flex;
   .login-form {
     position: relative;
     width: 520px;
@@ -316,7 +326,6 @@ $light_gray: #eee;
     font-size: 14px;
     color: #fff;
     margin-bottom: 10px;
-
     span {
       &:first-of-type {
         margin-right: 16px;
@@ -326,7 +335,7 @@ $light_gray: #eee;
 
   .svg-container {
     padding: 6px 5px 6px 15px;
-    color: $dark_gray;
+    // color: $dark_gray;
     vertical-align: middle;
     width: 30px;
     display: inline-block;
@@ -350,53 +359,35 @@ $light_gray: #eee;
     cursor: pointer;
     user-select: none;
   }
+}
 
-  .thirdparty-button {
-    position: absolute;
-    right: 0;
-    bottom: 6px;
+/*媒体查询*/
+@media screen and (max-width: 1440px) {
+  .container {
+    grid-gap: 5rem;
   }
-
-  @media only screen and (max-width: 470px) {
-    .thirdparty-button {
-      display: none;
-    }
-  }
-
-  /*媒体查询*/
-@media screen and (max-width: 1080px) {
-    .container{
-        grid-gap: 9rem;
-    }
 }
 @media screen and (max-width: 1024px) {
-    el-form{
-        width: 290px;
-    }
-    el-form h5{
-        font-size: 2.4rem;
-        margin: 8px 0;
-    }
-    .img img{
-        width: 360px;
-    }
-}
-@media screen and (max-width: 768px) {
-    .wave{
-        display: none;
-    }
-    .img{
-        display: none;
-    }
-    .container{
-        grid-template-columns: 1fr;
-    }
-    .login-container{
-        justify-content: center;
-    }
-}
-}
+  .login-form {
+    width: 360px !important;
+  }
 
-
-
+  .img img {
+    width: 360px;
+  }
+}
+@media screen and (max-width: 848px) {
+  .wave {
+    display: none !important;
+  }
+  .img {
+    display: none !important;
+  }
+  .container {
+    grid-template-columns: 1fr;
+  }
+  .login-container {
+    justify-content: center;
+  }
+}
 </style>
