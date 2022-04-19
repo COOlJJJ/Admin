@@ -378,10 +378,10 @@ $light_gray: #eee;
 }
 @media screen and (max-width: 848px) {
   .wave {
-    display: none !important;
+    display: none ;
   }
   .img {
-    display: none !important;
+    display: none;
   }
   .container {
     grid-template-columns: 1fr;
