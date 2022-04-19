@@ -1,92 +1,97 @@
 <template>
-  <el-container>
-    <div class="login-container">
-      <el-header style="padding: 0; width: 100%; position: fixed; z-index: 1"
-        ><div style="display: flex; justify-content: end">
-          <img
-            src="../../assets/LOGO/siemens.svg"
-            alt=""
-            style="
-              width: 200px;
-              height: 45px;
-              margin-top: 5px;
-              margin-left: 5px;
-            "
-          /></div
-      ></el-header>
-      <el-form
-        ref="loginForm"
-        :model="loginForm"
-        :rules="loginRules"
-        class="login-form"
-        autocomplete="on"
-        label-position="left"
-      >
-        <div class="title-container">
-          <h3 class="title">Login Form</h3>
-        </div>
-        <h5>User Name</h5>
-        <el-form-item prop="username">
-          <span class="svg-container">
-            <svg-icon icon-class="user" />
-          </span>
-          <el-input
-            ref="username"
-            v-model="loginForm.username"
-            placeholder="Username"
-            name="username"
-            type="text"
-            tabindex="1"
-            autocomplete="on"
-          />
-        </el-form-item>
-        <h5>Password</h5>
-        <el-tooltip
-          v-model="capsTooltip"
-          content="Caps lock is On"
-          placement="right"
-          manual
+  <div class="bodymain">
+    <img src="../../assets/backgroundimg/bg.png" alt="" class="wave" />
+    <el-header style="padding: 0; width: 100%; position: fixed; z-index: 1"
+      ><div style="display: flex; justify-content: end">
+        <img
+          src="../../assets/LOGO/siemens.svg"
+          alt=""
+          style="
+            width: 200px;
+            height: 45px;
+            margin-top: 5px;
+            margin-left: 5px;
+            z-index: 1;
+          "
+        /></div
+    ></el-header>
+
+    <div class="container">
+      <div class="img">
+        <img src="../../assets/backgroundimg/Pic.svg" alt="" />
+      </div>
+
+      <div class="login-container">
+        <el-form
+          ref="loginForm"
+          :model="loginForm"
+          :rules="loginRules"
+          class="login-form"
+          autocomplete="on"
+          label-position="left"
         >
-          <el-form-item prop="password">
+          <div class="title-container">
+            <h3 class="title">Login Form</h3>
+          </div>
+          <h5>User Name</h5>
+          <el-form-item prop="username">
             <span class="svg-container">
-              <svg-icon icon-class="password" />
+              <svg-icon icon-class="user" />
             </span>
             <el-input
-              :key="passwordType"
-              ref="password"
-              v-model="loginForm.password"
-              :type="passwordType"
-              placeholder="Password"
-              name="password"
-              tabindex="2"
+              ref="username"
+              v-model="loginForm.username"
+              placeholder="Username"
+              name="username"
+              type="text"
+              tabindex="1"
               autocomplete="on"
-              @keyup.native="checkCapslock"
-              @blur="capsTooltip = false"
-              @keyup.enter.native="handleLogin"
             />
-            <span class="show-pwd" @click="showPwd">
-              <svg-icon
-                :icon-class="passwordType === 'password' ? 'eye' : 'eye-open'"
-              />
-            </span>
           </el-form-item>
-        </el-tooltip>
+          <h5>Password</h5>
+          <el-tooltip
+            v-model="capsTooltip"
+            content="Caps lock is On"
+            placement="right"
+            manual
+          >
+            <el-form-item prop="password">
+              <span class="svg-container">
+                <svg-icon icon-class="password" />
+              </span>
+              <el-input
+                :key="passwordType"
+                ref="password"
+                v-model="loginForm.password"
+                :type="passwordType"
+                placeholder="Password"
+                name="password"
+                tabindex="2"
+                autocomplete="on"
+                @keyup.native="checkCapslock"
+                @blur="capsTooltip = false"
+                @keyup.enter.native="handleLogin"
+              />
+              <span class="show-pwd" @click="showPwd">
+                <svg-icon
+                  :icon-class="passwordType === 'password' ? 'eye' : 'eye-open'"
+                />
+              </span>
+            </el-form-item>
+          </el-tooltip>
 
-        <el-button
-          :loading="loading"
-          type="primary"
-          round
-          style="width: 25%; margin-bottom: 30px"
-          @click.native.prevent="handleLogin"
-          >Login</el-button
-        >
-      </el-form>
-      <el-footer>
-        <div class="blewOne">Copyright © 2022, All Rights Reserved.</div>
-        <div class="blew">Powered By OP OE Digital</div>
-      </el-footer>
+          <el-button
+            :loading="loading"
+            type="primary"
+            round
+            style="width: 25%; margin-bottom: 30px"
+            @click.native.prevent="handleLogin"
+            >Login</el-button
+          >
+        </el-form>
+      </div>
     </div>
-  </el-container>
+  </div>
 </template>
 
 <script>
@@ -128,7 +133,7 @@ export default {
     $route: {
       handler: function (route) {
         const query = route.query
-        
+
         if (query) {
           this.redirect = query.redirect
           this.otherQuery = this.getOtherQuery(query)
@@ -151,6 +156,8 @@ export default {
 
   },
   methods: {
+
+
     checkCapslock(e) {
       const { key } = e
       this.capsTooltip = key && key.length === 1 && (key >= 'A' && key <= 'Z')
@@ -244,6 +251,37 @@ $bg: #2d3a4b;
 $dark_gray: #889aa4;
 $light_gray: #eee;
 
+.bodymain {
+  padding: 0;
+  margin: 0;
+  box-sizing: border-box;
+}
+
+.container {
+  width: 100vw;
+  height: 100vh;
+  display: grid;
+  grid-template-columns: repeat(2, 1fr);
+  grid-gap: 18rem;
+  padding: 0 2rem;
+}
+
+.img {
+  display: flex;
+  justify-content: flex-end;
+  align-items: center;
+}
+.img img {
+  width: 600px;
+}
+
+.wave {
+  position: fixed;
+  height: 100%;
+  left: 0;
+  bottom: 0;
+  z-index: -1;
+}
 .el-container {
   min-height: 100%;
   width: 100%;
@@ -261,10 +299,10 @@ $light_gray: #eee;
   transform: translate(-50%, -50%); //(X,Y)水平减少自身的50%距离
 }
 .login-container {
+  
   min-height: 100%;
   width: 100%;
   overflow: hidden;
-
   .login-form {
     position: relative;
     width: 520px;
@@ -324,5 +362,41 @@ $light_gray: #eee;
       display: none;
     }
   }
+
+  /*媒体查询*/
+@media screen and (max-width: 1080px) {
+    .container{
+        grid-gap: 9rem;
+    }
 }
+@media screen and (max-width: 1024px) {
+    el-form{
+        width: 290px;
+    }
+    el-form h5{
+        font-size: 2.4rem;
+        margin: 8px 0;
+    }
+    .img img{
+        width: 360px;
+    }
+}
+@media screen and (max-width: 768px) {
+    .wave{
+        display: none;
+    }
+    .img{
+        display: none;
+    }
+    .container{
+        grid-template-columns: 1fr;
+    }
+    .login-container{
+        justify-content: center;
+    }
+}
+}
+
+
+
 </style>
